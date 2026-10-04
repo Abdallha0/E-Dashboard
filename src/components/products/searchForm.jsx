@@ -69,15 +69,15 @@ function ProductsSearchForm({ setFilterParameters }) {
         className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900"
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-
           <motion.button
             whileHover={{ scale: 1.02, y: -1 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setShowFilters(!showFilters)}
-            className={`flex h-12 flex-1 sm:flex-initial sm:py-4 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold transition-all duration-300 ${showFilters
-              ? "border-cyan-200 bg-cyan-50/50 text-cyan-600 dark:border-cyan-900/40 dark:bg-cyan-950/30 dark:text-cyan-400"
-              : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:text-white"
-              }`}
+            className={`flex h-12 flex-1 sm:flex-initial sm:py-4 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold transition-all duration-300 ${
+              showFilters
+                ? "border-cyan-200 bg-cyan-50/50 text-cyan-600 dark:border-cyan-900/40 dark:bg-cyan-950/30 dark:text-cyan-400"
+                : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:text-white"
+            }`}
           >
             <motion.div
               animate={{ rotate: showFilters ? 90 : 0 }}
@@ -101,10 +101,11 @@ function ProductsSearchForm({ setFilterParameters }) {
 
             <Search
               size={16}
-              className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${isFocused
-                ? "text-cyan-500"
-                : "text-slate-400 dark:text-slate-500"
-                }`}
+              className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
+                isFocused
+                  ? "text-cyan-500"
+                  : "text-slate-400 dark:text-slate-500"
+              }`}
             />
 
             <input
@@ -138,12 +139,12 @@ function ProductsSearchForm({ setFilterParameters }) {
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               onClick={cancel}
-              className={`flex h-12 flex-1 sm:flex-initial items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold transition-all duration-300 ${showFilters
-                ? "border-cyan-200 bg-cyan-50/50 text-cyan-600 dark:border-cyan-900/40 dark:bg-cyan-950/30 dark:text-cyan-400"
-                : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:text-white"
-                }`}
+              className={`flex h-12 flex-1 sm:flex-initial items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold transition-all duration-300 ${
+                showFilters
+                  ? "border-cyan-200 bg-cyan-50/50 text-cyan-600 dark:border-cyan-900/40 dark:bg-cyan-950/30 dark:text-cyan-400"
+                  : "border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 hover:text-slate-800 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:text-white"
+              }`}
             >
-
               Cancel
             </motion.button>
 

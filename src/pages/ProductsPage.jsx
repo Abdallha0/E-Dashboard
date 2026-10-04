@@ -12,6 +12,7 @@ import Loader from "../components/loader";
 import SimplePagination from "../components/orders/pagination";
 import { useSearchParams } from "react-router-dom";
 import api from "../lib/api";
+import ProductCardSkeleton from "../components/products/productsSkeleton";
 export const QuickEditContext = createContext();
 
 function Reducer(state, action) {
@@ -91,7 +92,7 @@ function ProductsPage() {
     const queryString = query.toString();
     const endpoint = isSearch ? `/search?${queryString}` : `?${queryString}`;
 
-    getProducts(endpoint, {
+    getProducts(endpoint.toLowerCase().replaceAll(" ", ""), {
       signal: controller.signal,
     })
       .then((res) => {
@@ -181,7 +182,6 @@ function ProductsPage() {
       });
   }
 
-  if (isLoading) return <Loader />;
   return (
     <main className="p-4 space-y-6">
       <ProductsHeader />
@@ -190,18 +190,20 @@ function ProductsPage() {
       <QuickEditContext.Provider
         value={{ quickEdit, setQuickEdit, deleteProduct }}
       >
-        <ProductGrid products={products} />
+        <ProductGrid isLoading={isLoading} products={products} />
       </QuickEditContext.Provider>
       {quickEdit && (
         <EditProductModal productId={quickEdit} removeProduct={setQuickEdit} />
       )}
-      <div className="flex justify-center items-center">
-        <SimplePagination
-          currentPage={currentPage || CurrentPage}
-          setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
-        />
-      </div>
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center">
+          <SimplePagination
+            currentPage={currentPage || CurrentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+          />
+        </div>
+      )}
     </main>
   );
 }

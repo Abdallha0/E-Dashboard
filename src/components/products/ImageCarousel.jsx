@@ -55,10 +55,11 @@ function ImageCarousel({ images, productName }) {
             alt={productName}
             custom={direction}
             variants={variants}
-            initial={hasMounted.current ? "enter" : false} // ✅ no animation on first render
+            initial={hasMounted.current ? "enter" : false} // no animation on first render
             animate="center"
             exit="exit"
-            className="absolute h-64 w-full object-cover"
+            className="absolute h-64 w-full"
+            style={{backgroundSize: "100% 100%"}}
           />
         </AnimatePresence>
       </div>
